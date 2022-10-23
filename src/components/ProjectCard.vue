@@ -5,7 +5,7 @@
         <v-card
           class="d-flex flex-column fill-height rounded-lg"
           elevation="8"
-          fill-height
+          fill-height          
         >
           <v-img :src="item.imagesUrl" height="250" max-height="250"></v-img>
           <v-card-title
@@ -17,7 +17,6 @@
             class="body-2 text-justify align-stretch"
             v-text="item.desc"
           ></v-card-text>
-          <v-spacer></v-spacer>
           <v-fade-transition>
             <v-overlay v-if="hover" absolute class="d-flex align-end">
               <v-card-actions class="flex-column">

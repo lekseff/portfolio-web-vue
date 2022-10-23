@@ -1,3 +1,7 @@
+![example workflow](https://github.com/lekseff/portfolio-web-vue/actions/workflows/deploy.yml/badge.svg)
+
+[GitHub Pages](https://lekseff.github.io/portfolio-web-vue/)
+
 # portfolio-vuetify
 
 ## Project setup
