@@ -4,26 +4,7 @@
       <v-container>
         <h1 class="text-center mb-1">Портфолио</h1>
         <v-divider></v-divider>
-        <!-- <v-col cols="12" class="py-0 d-flex justify-center">
-          <v-btn-toggle v-model="activeFilter" color="primary" group borderless>
-            <v-btn class="mx-1 my-0" value="all">              
-              <v-icon left>mdi-format-list-bulleted</v-icon>
-              <span>All</span>
-            </v-btn>
-            <v-btn class="mx-1 my-0" value="react">
-              <v-icon left>mdi-react</v-icon>
-              <span>React</span>
-            </v-btn>
-            <v-btn class="mx-1 my-0" value="javascript">
-              <v-icon left>mdi-language-javascript</v-icon>
-              <span>JavaScript</span>
-            </v-btn>
-          </v-btn-toggle>
-        </v-col> -->
-        <AppFilters
-          :filters="filters"
-          @change-filter="changeFilter"
-        />
+        <AppFilters :filters="filters" @change-filter="changeFilter" />
         <v-divider></v-divider>
         <v-row class="mt-3">
           <ProjectCard
@@ -40,16 +21,21 @@
 <script>
 import { v4 } from 'uuid';
 import ProjectCard from './components/ProjectCard.vue';
-import AppFilters from './components/AppFilters.vue'
+import AppFilters from './components/AppFilters.vue';
 
 export default {
   name: 'App',
   components: {
     ProjectCard,
-    AppFilters
+    AppFilters,
   },
   data: () => ({
     activeFilter: 'all',
+    filters: [
+      { title: 'Все', value: 'all', icon: 'format-list-bulleted' },
+      { title: 'React', value: 'react', icon: 'react' },
+      { title: 'JavaScript', value: 'javascript', icon: 'language-javascript' },
+    ],
     projects: [
       {
         id: v4(),
@@ -176,7 +162,7 @@ export default {
         imagesUrl: 'https://imageup.ru/img157/4050489/bot-min.jpg',
         githubUrl: 'https://github.com/lekseff/Bot_Frontend',
         linkUrl: '',
-      }, 
+      },
       {
         id: v4(),
         title: 'Конвертер цветов из HEX в RGB',
@@ -187,25 +173,20 @@ export default {
         linkUrl: 'https://lekseff.github.io/Hex_to_RGB_converter/',
       },
     ],
-    filters: [
-      { title: 'Все', value: 'all', icon: 'format-list-bulleted' },
-      { title: 'React', value: 'react', icon: 'react'},
-      { title: 'JavaScript', value: 'javascript', icon: 'language-javascript'},
-    ],
   }),
   computed: {
-    filtered () {
+    filtered() {
       if (this.activeFilter === 'all') {
-        return this.projects
+        return this.projects;
       } else {
-        return this.projects.filter(item => item.stack === this.activeFilter)
-      }      
-    }
+        return this.projects.filter((item) => item.stack === this.activeFilter);
+      }
+    },
   },
   methods: {
     changeFilter(filter) {
       this.activeFilter = filter;
-    }
-  }
+    },
+  },
 };
 </script>
