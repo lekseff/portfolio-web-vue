@@ -43,14 +43,6 @@
               </v-card-actions>
             </v-overlay>
           </v-fade-transition>
-          <!-- <v-card-actions class="flex-column">
-              <a v-if="item.linkUrl" :href="item.linkUrl" target="_blank" :style="{width: '100%', textDecoration: 'none'}">
-                <v-btn class="rounded-lg" color="primary" block>Открыть</v-btn>
-              </a>
-              <a class="mt-2" :href="item.githubUrl" target="_blank" :style="{width: '100%', textDecoration: 'none'}">
-                <v-btn class="rounded-lg" color="primary" block>Посмотреть на Github</v-btn>
-              </a>
-          </v-card-actions> -->
         </v-card>
       </template>
     </v-hover>

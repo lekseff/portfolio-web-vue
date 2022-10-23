@@ -4,7 +4,7 @@
       <v-container>
         <h1 class="text-center mb-1">Портфолио</h1>
         <v-divider></v-divider>
-        <v-col cols="12" class="py-0 d-flex justify-center">
+        <!-- <v-col cols="12" class="py-0 d-flex justify-center">
           <v-btn-toggle v-model="activeFilter" color="primary" group borderless>
             <v-btn class="mx-1 my-0" value="all">              
               <v-icon left>mdi-format-list-bulleted</v-icon>
@@ -19,7 +19,11 @@
               <span>JavaScript</span>
             </v-btn>
           </v-btn-toggle>
-        </v-col>
+        </v-col> -->
+        <AppFilters
+          :filters="filters"
+          @change-filter="changeFilter"
+        />
         <v-divider></v-divider>
         <v-row class="mt-3">
           <ProjectCard
@@ -36,11 +40,13 @@
 <script>
 import { v4 } from 'uuid';
 import ProjectCard from './components/ProjectCard.vue';
+import AppFilters from './components/AppFilters.vue'
 
 export default {
   name: 'App',
   components: {
     ProjectCard,
+    AppFilters
   },
   data: () => ({
     activeFilter: 'all',
@@ -182,9 +188,9 @@ export default {
       },
     ],
     filters: [
-      { title: 'Все', value: 'all' },
-      { title: 'React', value: 'react' },
-      { title: 'JavaScript', value: 'javascript' },
+      { title: 'Все', value: 'all', icon: 'format-list-bulleted' },
+      { title: 'React', value: 'react', icon: 'react'},
+      { title: 'JavaScript', value: 'javascript', icon: 'language-javascript'},
     ],
   }),
   computed: {
@@ -194,6 +200,11 @@ export default {
       } else {
         return this.projects.filter(item => item.stack === this.activeFilter)
       }      
+    }
+  },
+  methods: {
+    changeFilter(filter) {
+      this.activeFilter = filter;
     }
   }
 };
